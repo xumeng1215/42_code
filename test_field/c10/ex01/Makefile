@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = main.c
 OBJ = $(SRC:.c=.o)
-TARGET = ft_display_file
+TARGET = ft_cat
 
 all: $(TARGET)
 
