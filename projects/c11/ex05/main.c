@@ -6,80 +6,74 @@
 /*   By: mexu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:27:37 by mexu              #+#    #+#             */
-/*   Updated: 2023/12/07 16:27:39 by mexu             ###   ########.fr       */
+/*   Updated: 2023/12/10 10:59:50 by mexu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "ft.h"
+
+int	do_op(int a, char op, int b)
 {
-	int	neg_count;
+	int	(*operation[5])(int, int);
 	int	result;
 
-	result = 0;
-	neg_count = 0;
-	while (*str < '0' || *str > '9')
-	{
-		if (*str == '-')
-			neg_count++;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	while (neg_count > 0)
-	{
-		neg_count--;
-		result = -1 * result;
-	}
+	result = 0;	
+	operation[0] = plus;
+	operation[1] = minus;
+	operation[2] = div;
+	operation[3] = mod;	
+	operation[4] = multi;
+
+
+	if(op == '+')
+		result = operation[0](a, b);
+	else if(op == '-')
+		result = operation[1](a, b);
+	else if(op == '/')
+		result = operation[2](a, b);
+	else if(op == '%')
+		result = operation[3](a, b);
+	else if(op == '*')
+		result = operation[4](a, b);
+	else
+		result = 0;
 	return (result);
 }
 
-int	do_op(int a, char *op, int b)
+int	check_args(int b, char *op)
 {
-	int	(*operation[4])(int, int);
-	int	len;
-	int	result;
-
-	result = 0;
-	len = ft_strlen(op);
-	if(len != 1)
+	printf("%s\n", op);
+	if(*op != '+' || *op != '-' || *op != '/' || *op != '%')
+	{
+		write(1, "0\n", 1);
 		return (0);
-	
-	operation[4] = {plus, minus, divide, modulo};
-
-	if(*op == '+')
-		result = operation[0](a, b);
-	else if(*op == '-')
-		result = operation[1](a, b);
-	else if(*op == '/')
-	{	
-
-		operation[2](a, b);
 	}
-	else if(*op == '%')
-	{	
-		if (b == 0)
-		{
-			write (1, "Stop : modulo by zero\n", 30);
-			 ;
-		}
-		operation[3](a, b);
+
+	if(*op == '+' || *op == '-')
+		return (1);
+	if(*op == '/' && b == 0)
+	{
+		write(1, "message\n", 30);
+		return (0);
 	}
-	else
-		write 
-
-
+	if(*op == '%' && b == 0)
+	{
+		write(1, "modulo message\n", 30);
+		return (0);
+	}
+	return (1);
 }
 
 int	main(int argc, char *args[])
 {
+
 	if(argc != 4)
 		return (0);
 
 	int a = ft_atoi(args[1]);
 	int b = ft_atoi(args[3]);
 
-	do_op(a, args[2], b);
+	if (check_args(b, args[2]))
+		ft_putnbr(do_op(a, args[2][0], b));
+	return	(0);
 }
