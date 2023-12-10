@@ -6,20 +6,21 @@
 /*   By: mexu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:40:58 by mexu              #+#    #+#             */
-/*   Updated: 2023/12/07 09:41:14 by mexu             ###   ########.fr       */
+/*   Updated: 2023/12/07 13:10:41 by mexu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
-void	ft_putstr(char *str)
+
+void	error_msg(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		write (1, &str[i], 1);
+		write (2, &str[i], 1);
 		i++;
 	}
 	return ;
@@ -36,7 +37,7 @@ void	display_file(char *file_name)
 	file_descriptor = open(file_name, O_RDONLY);
 	if (file_descriptor == -1)
 	{
-		ft_putstr(msg_read_error);
+		error_msg(msg_read_error);
 		return ;
 	}
 	bytes_read = read(file_descriptor, buffer, sizeof(buffer));
@@ -57,12 +58,12 @@ int	main(int argc, char *args[])
 	msg_too_many_arg = "Too many arguments.\n";
 	if (argc == 1)
 	{
-		ft_putstr(msg_no_arg);
+		error_msg(msg_no_arg);
 		return (0);
 	}
 	if (argc > 2)
 	{
-		ft_putstr(msg_too_many_arg);
+		error_msg(msg_too_many_arg);
 		return (0);
 	}
 	display_file(args[1]);
