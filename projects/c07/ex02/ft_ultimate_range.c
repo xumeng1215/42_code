@@ -41,10 +41,10 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (size_of_range);
 }
 
-/*
+
 int	main(void)
 {
-	int	min = 40;
+	int	min = 4;
 	int	max = 10;
 	
 	int *result; 
@@ -60,4 +60,4 @@ int	main(void)
 		i++;
 	}
 }
-*/
+
