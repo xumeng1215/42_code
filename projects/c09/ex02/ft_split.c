@@ -109,7 +109,7 @@ char	**ft_split(char *str, char *charset)
 	return (result);
 }
 
-/*
+
 int main() {
     char *str = "a111ab22c2b333d4444a";
     char *charset = "abcd";
@@ -124,4 +124,4 @@ int main() {
 	free(result);
     return 0;
 }
-*/
+
