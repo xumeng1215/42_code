@@ -17,71 +17,47 @@
 
 #include "libft.h"
 
-int	count_words(const char *str, char c)
-{
-	int	count;
-	int	in_word;
+char **ft_split(char const *s, char c) {
+    char **arr;
+    size_t len, i, j, k=0;
+    char *sub;
 
-	count = 0;
-	in_word = 0;
-	while (*str != '\0')
-	{
-		if (*str == c)
-			in_word = 0;
-		else if (in_word == 0)
-		{
-			in_word = 1;
-			count++;
-		}
-		str++;
-	}
-	return (count);
+    if (s == NULL)
+        return NULL;
+
+    len = strlen(s);
+    arr = (char**)malloc((len / 2 + 1) * sizeof(char*));
+    if (arr == NULL)
+        return NULL;
+
+    i = j = 0;
+    while (s[i]) {
+        if (s[i] == c) {
+            sub = ft_substr(s + j, 0, i - j);
+            if (sub == NULL) {
+                for (k = 0; k < j; k++)
+                    free(arr[k]);
+                free(arr);
+                return NULL;
+            }
+            arr[k++] = sub;
+            j = i + 1;
+        }
+        i++;
+    }
+
+    sub = ft_substr(s + j, 0, i - j);
+    if (sub == NULL) {
+        for (k = 0; k < j; k++)
+            free(arr[k]);
+        free(arr);
+        return NULL;
+    }
+    arr[k++] = sub;
+    arr[k] = NULL;
+
+    return arr;
 }
-
-char	**mapping_word(char **result, const char *str, char c)
-{
-	int			index;
-	int			in_word;
-	const char	*start;
-
-	index = 0;
-	in_word = 0;
-	start = str;
-	while (*str != '\0')
-	{
-		if (*str == c)
-		{
-			if (in_word)
-				result[index++] = ft_substr(start, 0, str - start);
-			in_word = 0;
-		}
-		else if (!in_word)
-		{
-			start = str;
-			in_word = 1;
-		}
-		str++;
-	}
-	if (in_word)
-		result[index] = ft_substr(start, 0, str - start);
-	return (result);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	int		num_words;
-	char	**result;
-
-	num_words = count_words(s, c);
-	result = (char **)malloc((num_words + 1) * sizeof(char *));
-	if (result == NULL)
-		return (0);
-	mapping_word(result, s, c);
-	result[num_words] = 0;
-	return (result);
-}
-
-/*
 int main() {
     char *str = "aab22c2b33a3d4444akkkk";
     char spliter = 'a';
@@ -96,4 +72,3 @@ int main() {
 	free(result);
     return 0;
 }
-*/
