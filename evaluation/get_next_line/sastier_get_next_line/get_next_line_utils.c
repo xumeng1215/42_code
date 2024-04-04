@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+//find the first \n in str, return its index.
 int	find_line(char *str)
 {
 	int	i;
@@ -28,6 +29,8 @@ int	find_line(char *str)
 	return (-1);
 }
 
+//add i bytes of memory to the end of str
+//copy to a new place and free the old one
 char	*ft_realloc(char *str, int i)
 {
 	char	*temp;
@@ -57,6 +60,9 @@ char	*ft_realloc(char *str, int i)
 	return (temp);
 }
 
+//dup the src from beginning to the first \n
+//with null terminator at the end
+//return the new string, but keep the old one
 char	*ft_strdup(const char *src)
 {
 	int		count;
@@ -81,6 +87,9 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
+//copy the content from first \n to the end of src
+//with null terminator at the end
+//return new string, free the old one
 char	*ft_substr(char *src)
 {
 	char	*res;

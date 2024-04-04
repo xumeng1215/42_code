@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+//add src to the end of dest
 char	*ft_strcat(char *dest, const char *src)
 {
 	int	i;
@@ -29,6 +30,7 @@ char	*ft_strcat(char *dest, const char *src)
 	dest[i + j] = '\0';
 	return (dest);
 }
+
 
 char	*read_line(int fd, char *str)
 {
