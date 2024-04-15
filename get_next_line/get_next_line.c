@@ -62,7 +62,7 @@ char	*get_next_line(int fd)
 	char			*line;
 
 	line = NULL;
-	if (read(fd, 0, 0) == -1 || BUFFER_SIZE <= 0)
+	if (fd < 0 || read(fd, 0, 0) == -1)
 	{
 		free(str);
 		return (NULL);
@@ -81,20 +81,21 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
-// test main function
-int	main(void)
-{
-	int i;
-	int fd;
 
-	fd = open("text.txt", O_RDONLY);
-	printf("fd is %d\n", fd);	
-	for(i = 0; i < 5; i++)
-	{
-		printf("%s", get_next_line(fd));
-	}
-	close(fd);
-	return 0;
-}
-*/
+// // test main function
+// int	main(void)
+// {
+// 	int i;
+// 	int fd;
+
+// 	fd = -2;
+// 	//fd = open("text.txt", O_RDONLY);
+// 	printf("fd is %d\n", fd);	
+// 	for(i = 0; i < 5; i++)
+// 	{
+// 		printf("%s", get_next_line(fd));
+// 	}
+// 	close(fd);
+// 	return 0;
+// }
+
