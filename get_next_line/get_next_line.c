@@ -31,7 +31,7 @@ int	ft_find_line(char *str)
 }
 
 // read from fd and add to the end of str
-// until str got another new line mark
+// until str got another new line mark or to the end of file
 // BUFFER_SIZE limited
 char	*ft_read_line(int fd, char *str)
 {
@@ -65,6 +65,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || read(fd, 0, 0) == -1)
 	{
 		free(str);
+		str = NULL;
 		return (NULL);
 	}
 	str = ft_read_line(fd, str);
@@ -76,21 +77,21 @@ char	*get_next_line(int fd)
 	{
 		free(str);
 		free(line);
+		str = NULL;
 		return (NULL);
 	}
 	return (line);
 }
 
-
-// // test main function
+// test main function
 // int	main(void)
 // {
 // 	int i;
 // 	int fd;
 
-// 	fd = -2;
-// 	//fd = open("text.txt", O_RDONLY);
-// 	printf("fd is %d\n", fd);	
+// 	fd = open("empty.txt", O_RDONLY);
+// 	printf("fd is %d\n", fd);
+// 	printf("%zd\n", read(fd, 0, 0));	
 // 	for(i = 0; i < 5; i++)
 // 	{
 // 		printf("%s", get_next_line(fd));
@@ -98,4 +99,3 @@ char	*get_next_line(int fd)
 // 	close(fd);
 // 	return 0;
 // }
-

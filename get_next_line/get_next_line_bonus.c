@@ -31,7 +31,7 @@ int	ft_find_line(char *str)
 }
 
 // read from fd and add to the end of str
-// until str got another new line mark
+// until str got another new line mark or to the end of file
 // BUFFER_SIZE limited
 char	*ft_read_line(int fd, char *str)
 {
@@ -62,9 +62,10 @@ char	*get_next_line(int fd)
 	char			*line;
 
 	line = NULL;
-	if (read(fd, 0, 0) == -1 || BUFFER_SIZE <= 0)
+	if (read(fd, 0, 0) == -1 || fd < 0)
 	{
 		free(str[fd]);
+		str[fd] = NULL;
 		return (NULL);
 	}
 	str[fd] = ft_read_line(fd, str[fd]);
@@ -76,6 +77,7 @@ char	*get_next_line(int fd)
 	{
 		free(str[fd]);
 		free(line);
+		str[fd] = NULL;
 		return (NULL);
 	}
 	return (line);
