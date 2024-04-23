@@ -84,18 +84,17 @@ char	*get_next_line(int fd)
 }
 
 // test main function
-// int	main(void)
-// {
-// 	int i;
-// 	int fd;
+int	main(void)
+{
+	int i;
+	int fd;
 
-// 	fd = open("empty.txt", O_RDONLY);
-// 	printf("fd is %d\n", fd);
-// 	printf("%zd\n", read(fd, 0, 0));	
-// 	for(i = 0; i < 5; i++)
-// 	{
-// 		printf("%s", get_next_line(fd));
-// 	}
-// 	close(fd);
-// 	return 0;
-// }
+	fd = open("1.txt", O_RDONLY);
+	printf("fd is %d\n", fd);
+	for(i = 0; i < 5; i++)
+	{
+		printf("%s", get_next_line(fd));
+	}
+	close(fd);
+	return 0;
+}
