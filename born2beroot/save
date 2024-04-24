@@ -1,0 +1,20 @@
+adduser user1
+ssh -p 4242 user1@localhost
+deluser --remove-home user1
+sudo systemctl restart ss
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+sudo hostnamectl set-hostname new_hostname
+sudo systemctl restart networking
+hostname
+sudo nano /etc/pam.d/common-password
+sudo usermod -aG sudo username
+groups username
+id username
+sudo groupdel groupname
+sudo nano /etc/login.defs 
+PASS_MAX_DAYS 30
+sudo nano /etc/pam.d/common-password
+root U9m[]iz2LNP1234
+
