@@ -73,8 +73,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re:  clean all
+re: fclean all
 
-rebonus: clean bonus
+rebonus: fclean bonus
 
-.PHONY: all bonus clean fclean re rebonus
