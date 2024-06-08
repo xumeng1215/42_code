@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-unsigned int	ft_strlen(const char *s)
+unsigned int	ft_strlen2(const char *s)
 {
 	unsigned int	i;
 
@@ -35,5 +35,5 @@ int	ft_print_str(char *s)
 	if (s == NULL)
 		return (write(1, "(null)", 6));
 	else
-		return (write(1, s, ft_strlen(s)));
+		return (write(1, s, ft_strlen2(s)));
 }

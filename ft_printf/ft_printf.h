@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <limits.h>
 
-unsigned int	ft_strlen(const char *s);
+unsigned int	ft_strlen2(const char *s);
 int				ft_printf(const char *format, ...);
 int				ft_put_args(char c, va_list args);
 
