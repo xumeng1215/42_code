@@ -6,7 +6,7 @@
 /*   By: mexu / Charlie <charlie_xumeng@hotmail.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 14:41:44 by mexu / Char       #+#    #+#             */
-/*   Updated: 2024/06/07 15:33:12 by mexu / Char      ###   ########.fr       */
+/*   Updated: 2024/06/18 14:16:46 by charlie||        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sig_receiver(int sig, siginfo_t *info, void *context)
 	(void)context;
 	if (sig == SIGUSR1)
 		received_bit = 1;
-	else if (sig == SIGUSR2)
+	else
 		received_bit = 0;
 	current_char = (current_char << 1) | received_bit;
 	bit_count++;
