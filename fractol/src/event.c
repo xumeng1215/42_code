@@ -13,12 +13,18 @@
 #include "../fractol.h"
 
 // exit program when press ESC or the x button
+// int	ft_exit(t_fractol *f)
+// {
+// 	mlx_destroy_image(f->mlx_ptr, f->img.img_ptr);
+// 	mlx_destroy_window(f->mlx_ptr, f->win_ptr);
+// 	mlx_destroy_display(f->mlx_ptr);
+// 	free(f->mlx_ptr);
+// 	exit(EXIT_SUCCESS);
+// }
 int	ft_exit(t_fractol *f)
 {
 	mlx_destroy_image(f->mlx_ptr, f->img.img_ptr);
 	mlx_destroy_window(f->mlx_ptr, f->win_ptr);
-	mlx_destroy_display(f->mlx_ptr);
-	free(f->mlx_ptr);
 	exit(EXIT_SUCCESS);
 }
 

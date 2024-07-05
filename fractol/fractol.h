@@ -15,12 +15,44 @@
 
 // includes headers
 // # include <stdio.h>
-# include "minilibx-linux/mlx.h"
+
+//include mlx for linux
+// # include "minilibx-linux/mlx.h"
+// # include <X11/keysym.h>
+// # include <X11/X.h>
+
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+
+// include mlx for macos
+# include "minilibx_mac/mlx.h"
+
+enum
+{
+	XK_w				= 13,	// W key
+	XK_a				= 0,	// A key
+	XK_s				= 1,	// S key
+	XK_d				= 2,	// D key
+	XK_Up				= 126,	// Up arrow key
+	XK_Down				= 125,	// Down arrow key
+	XK_Left				= 123,	// Left arrow key
+	XK_Right			= 124,	// Right arrow key
+	XK_space			= 49,	// Space key
+	XK_Page_Up			= 116,	// Page Up key
+	XK_Page_Down		= 121,	// Page Down key
+	XK_r				= 15,	// R key
+	XK_Escape			= 53,	// ESC key
+	Button1				= 1,	// Left mouse button
+	Button4				= 4,	// Scroll wheel up
+	Button5				= 5,	// Scroll wheel down
+	KeyPress			= 2,
+	KeyPressMask		= (1L<<0),
+	ButtonPress			= 4,
+	ButtonPressMask		= (1L<<2),
+	DestroyNotify		= 17,
+	StructureNotifyMask	= (1L<<17)
+};
 
 // window size define
 # define WIDTH 600

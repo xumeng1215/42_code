@@ -2,7 +2,8 @@ NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_PATH	= minilibx-linux/
+# MLX_PATH	= minilibx-linux/
+MLX_PATH	= minilibx_mac/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
 
@@ -24,7 +25,8 @@ INCLUDES = -I $(SRCDIR) -I $(MLX_PATH)
 all: $(NAME) 
 
 $(NAME): $(OBJ) $(MLX)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) -lXext -lX11 $(INCLUDES)
+	# $(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) -lXext -lX11 $(INCLUDES)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) -framework OpenGL -framework AppKit $(INCLUDES)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)

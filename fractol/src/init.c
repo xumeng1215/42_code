@@ -42,6 +42,31 @@ static void	event_init(t_fractol *f)
 }
 
 // set up mlx pointer, window pointer, image
+// void	fractal_init(t_fractol *f)
+// {
+// 	f->mlx_ptr = mlx_init();
+// 	if (NULL == f->mlx_ptr)
+// 		malloc_error();
+// 	f->win_ptr = mlx_new_window(f->mlx_ptr, WIDTH, HEIGHT, f->name);
+// 	if (NULL == f->win_ptr)
+// 	{
+// 		// mlx_destroy_display(f->mlx_ptr);
+// 		free(f->mlx_ptr);
+// 		malloc_error();
+// 	}
+// 	f->img.img_ptr = mlx_new_image(f->mlx_ptr, WIDTH, HEIGHT);
+// 	if (NULL == f->img.img_ptr)
+// 	{
+// 		mlx_destroy_window(f->mlx_ptr, f->win_ptr);
+// 		// mlx_destroy_display(f->mlx_ptr);
+// 		free(f->mlx_ptr);
+// 		malloc_error();
+// 	}
+// 	f->img.pixels_ptr = mlx_get_data_addr(f->img.img_ptr,
+// 			&f->img.bits_per_pixel, &f->img.line_length, &f->img.endian);
+// 	event_init(f);
+// 	data_init(f);
+// }
 void	fractal_init(t_fractol *f)
 {
 	f->mlx_ptr = mlx_init();
@@ -50,7 +75,6 @@ void	fractal_init(t_fractol *f)
 	f->win_ptr = mlx_new_window(f->mlx_ptr, WIDTH, HEIGHT, f->name);
 	if (NULL == f->win_ptr)
 	{
-		mlx_destroy_display(f->mlx_ptr);
 		free(f->mlx_ptr);
 		malloc_error();
 	}
@@ -58,7 +82,6 @@ void	fractal_init(t_fractol *f)
 	if (NULL == f->img.img_ptr)
 	{
 		mlx_destroy_window(f->mlx_ptr, f->win_ptr);
-		mlx_destroy_display(f->mlx_ptr);
 		free(f->mlx_ptr);
 		malloc_error();
 	}
