@@ -6,7 +6,7 @@
 /*   By: mexu / Charlie <charlie_xumeng@hotmail.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:38:59 by mexu / Char       #+#    #+#             */
-/*   Updated: 2024/07/04 01:00:46 by mexu / Char      ###   ########.fr       */
+/*   Updated: 2024/07/08 16:10:46 by mexu / Char      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	show_tips(void)
 	ft_putstr_fd("./fractol julia <r> <i>\n", STDOUT_FILENO);
 	ft_putstr_fd("./fractol mandelbrot\n", STDOUT_FILENO);
 	ft_putstr_fd("./fractol tricorn\n", STDOUT_FILENO);
+	ft_putstr_fd("WSAD and arrow keys to move the fractal.\n", STDOUT_FILENO);
+	ft_putstr_fd("page up and down to adjust the iteration limits.\n", STDOUT_FILENO);
+	ft_putstr_fd("space to change color, and r to reset.\n", STDOUT_FILENO);
 }
 
 int	check_args(int ac, char **av)
