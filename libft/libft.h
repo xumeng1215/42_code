@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: charlie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mexu / Charlie <charlie_xumeng@hotmail.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:41:11 by charlie           #+#    #+#             */
-/*   Updated: 2024/03/14 13:00:57 by mexu             ###   ########.fr       */
+/*   Updated: 2024/07/08 16:21:46 by mexu / Char      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// added some new functions 
+double	ft_atodbl(char *s);
 
 #endif/* libft.h */
