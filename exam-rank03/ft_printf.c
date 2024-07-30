@@ -7,6 +7,10 @@
 int ft_printf(char *str, ...);
 int ft_put_args(va_list args, char c);
 int ft_put_char(char c);
+int ft_put_str(char *s);
+int ft_put_ptr(void *p);
+int ft_put_hex_low(unsigned long n);
+
 
 int main(void)
 {
@@ -55,5 +59,5 @@ int ft_put_char(char c)
 
 int ft_put_ptr(void *p)
 {
-    
+
 }
